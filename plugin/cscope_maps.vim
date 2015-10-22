@@ -25,17 +25,21 @@ if has("cscope")
     " use both cscope and ctag for 'ctrl-]', ':ta', and 'vim -t'
     set cscopetag
 
+    " use the basename of cscope.out as the prefix to construct absolute path
+    " so you will be able to add multiple cscope databases at once
+    set cscoperelative
+
     " check cscope for definition of a symbol before checking ctags: set to 1
     " if you want the reverse search order.
-    set csto=0
+    set csto=1
 
     " add any cscope database in current directory
-    if filereadable("cscope.out")
-        cs add cscope.out  
+"    if filereadable("cscope.out")
+"        cs add cscope.out
     " else add the database pointed to by environment variable 
-    elseif $CSCOPE_DB != ""
-        cs add $CSCOPE_DB
-    endif
+"    elseif $CSCOPE_DB != ""
+"        cs add $CSCOPE_DB
+"    endif
 
     " show msg when any other cscope db added
     set cscopeverbose  
